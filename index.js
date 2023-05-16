@@ -3,8 +3,11 @@ let input = document.getElementById("input-el");
 let button = document.getElementById("input-btn");
 let list = document.getElementById("list-el");
 let clear = document.getElementById("delete-btn");
+let tabBtn = document.getElementById("tab-btn");
 
 const leads = JSON.parse(localStorage.getItem("arr"));
+
+// const tab = [{url: "http://www.google.com"}]
 
 if(leads)
 {
@@ -24,6 +27,18 @@ clear.addEventListener("click", function(){
       arr = [];
       renderleads(arr);
 })
+
+tabBtn.addEventListener("click", function(){
+
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs)
+      {
+            arr.push(tabs[0].url)
+            localStorage.setItem("arr",JSON.stringify(arr));
+            renderleads(arr);
+      })
+
+})
+
 
 function renderleads(leads) {
       let items=""

@@ -24,7 +24,8 @@ button {
   border-radius: 3px;
 }
 
-#delete-btn {
+#delete-btn,
+#tab-btn {
   background: white;
   color: #5f9341;
   border: solid 2px #5f9341;
